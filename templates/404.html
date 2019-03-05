@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<ul class="movie-list">
+    <li>
+        Page Not Found - 404
+        <!--
+        <span class="float-right">
+            {% if current_user.is_authenticated %}
+            <a href="{{ url_for('index') }}">Go Back</a>
+            {% else %}
+            <a href="{{ url_for('index') }}">Go Back</a>
+            {% endif %}
+        </span>
+        -->
+    </li>
+</ul>
+{% endblock %}

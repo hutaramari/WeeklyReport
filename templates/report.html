@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- 在模板中可以直接使用 current_user 变量 -->
+{% for user in users %}
+<h3>{{ user.username|upper }}'s Report</h3>
+    <ul class="movie-list">
+        {% for work in works %}
+            {% if work.uname == user.username %}
+                <li>{{ work.uname }} - {{ work.recordtime|datetime2date }} - {{ work.project }}
+                    <span class="float-right">
+                    <a class="btn" href="{{ url_for('edit', work_id=work.id) }}">Edit</a>
+                    <form class="inline-form" method="post" action="{{ url_for('delete', work_id=work.id) }}">
+                        <input class="btn" type="submit" name="delete" value="Delete" onclick="return confirm('Are you sure?')">
+                    </form>
+                    </span>
+                <ul>
+                    <li>
+                        {{ work.uwork }}
+                    </li>
+                </ul>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% endfor %}
+<img alt="Walking Totoro" class="totoro" src="{{ url_for('static', filename='images/totoro.PNG') }}" title="to~to~ro~">
+{% endblock %}

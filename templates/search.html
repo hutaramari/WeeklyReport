@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- 在模板中可以直接使用 current_user 变量 -->
+<br>
+<br>
+<form method="post">
+    Start <input type='date' name='startdate'>
+    End <input type='date' name='enddate'>
+    <input class="btn" type="submit" name="submit" value="Search">
+    <br>
+</form>
+<img alt="Walking Totoro" class="totoro" src="{{ url_for('static', filename='images/totoro.PNG') }}" title="to~to~ro~">
+{% endblock %}

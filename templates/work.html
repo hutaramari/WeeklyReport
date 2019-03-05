@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- 在模板中可以直接使用 current_user 变量 -->
+<br>
+<br>
+<form method="post">
+    Date <input type='date' name='recordtime'>
+    Project <input type='text' name='project'>
+    <input class="btn" type="submit" name="submit" value="Add">
+    <br>
+    <textarea cols='20' style="width: 410px; height: 50px" name='uwork'>work</textarea>
+    <br>
+</form>
+
+<ul class="movie-list">
+    {% for work in works %}
+        <li>{{ work.uname }} - {{ work.recordtime|datetime2date }} - {{ work.project }}
+            <span class="float-right">
+            <a class="btn" href="{{ url_for('edit', work_id=work.id) }}">Edit</a>
+            <form class="inline-form" method="post" action="{{ url_for('delete', work_id=work.id) }}">
+                <input class="btn" type="submit" name="delete" value="Delete" onclick="return confirm('Are you sure?')">
+            </form>
+            </span>
+        <ul>
+            <li>
+                {{ work.uwork }}
+            </li>
+        </ul>
+        </li>
+    {% endfor %}
+</ul>
+
+<img alt="Walking Totoro" class="totoro" src="{{ url_for('static', filename='images/totoro.PNG') }}" title="to~to~ro~">
+{% endblock %}

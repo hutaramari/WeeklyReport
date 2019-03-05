@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Settings</h3>
+<form method="post">
+    <label for="in1">AdminOrGuest</label>
+    <select name="name" id="in1">
+        <option value="Guest">Guest</option>
+        <option value="Admin">Admin</option>
+    </select>
+    <br>
+    <!--
+    <input type="text" id="in1" name="name" autocomplete="off" required value="{{ current_user.name }}">
+    <br>
+    
+    <label for="in2">User Name</label>
+    <input type="text" id="in2" name="username" autocomplete="off" required value="{{ current_user.username }}" readonly>
+    <br>
+    -->
+    <label for="in3">Old Password</label>
+    <input type="password" id="in3" name="old_pass" required>
+    <br>
+    <label for="in4">New Password</label>
+    <input type="password" id="in4" name="new_pass" required>
+    <br>
+    <label for="in5">Confirm</label>
+    <input type="password" id="in5" name="confirm" required>
+    <br>
+    <input class="btn" type="submit" name="submit" value="Save">
+</form>
+{% endblock %}
